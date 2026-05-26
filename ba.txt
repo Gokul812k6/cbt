@@ -1,0 +1,166 @@
+Ah got you 😅 — you need proper R lab-record programs with library(), not ultra-minimal.
+
+Here are the 6 with common libraries and still simple.
+
+
+---
+
+1) Machine Learning Techniques for Predictive Analytics
+
+# Experiment 1
+# Machine Learning Techniques for Predictive Analytics
+
+library(caret)
+library(ggplot2)
+
+# Dataset
+data(iris)
+
+# Split data
+set.seed(100)
+trainIndex <- createDataPartition(iris$Species, p=0.8, list=FALSE)
+
+train <- iris[trainIndex, ]
+test <- iris[-trainIndex, ]
+
+# Train model
+model <- train(Species ~ ., data=train, method="rpart")
+
+# Prediction
+pred <- predict(model, test)
+
+# Result
+confusionMatrix(pred, test$Species)
+
+
+---
+
+2) Predict Customer Credit Risk Using Linear Regression
+
+# Experiment 2
+# Customer Credit Risk
+
+library(ggplot2)
+
+# Data
+income <- c(25000,30000,40000,50000,60000)
+loan <- c(5000,7000,9000,11000,13000)
+
+data <- data.frame(income, loan)
+
+# Linear regression
+model <- lm(loan ~ income, data=data)
+
+# Summary
+summary(model)
+
+# Plot
+ggplot(data, aes(income, loan)) +
+  geom_point() +
+  geom_smooth(method="lm")
+
+
+---
+
+3) HR Analytics – Employee Demand Prediction
+
+# Experiment 3
+# HR Analytics
+
+library(forecast)
+
+# Data
+employees <- c(20,25,28,32,35)
+
+# Time series
+ts_data <- ts(employees)
+
+# Forecast
+model <- forecast(ts_data, h=3)
+
+# Plot
+plot(model)
+
+
+---
+
+4) Forecasting and Inventory Planning
+
+# Experiment 4
+# Inventory Forecast
+
+library(forecast)
+
+# Data
+stock <- c(100,120,140,150,170)
+
+# Time series
+ts_data <- ts(stock)
+
+# Forecast
+model <- forecast(ts_data, h=3)
+
+# Plot
+plot(model)
+
+
+---
+
+5) Predictive Analytics for Customer Behaviour in Marketing and Sales
+
+# Experiment 5
+# Marketing and Sales
+
+library(ggplot2)
+
+# Data
+ads <- c(10,20,30,40,50)
+sales <- c(100,150,200,250,300)
+
+data <- data.frame(ads, sales)
+
+# Model
+model <- lm(sales ~ ads, data=data)
+
+# Summary
+summary(model)
+
+# Plot
+ggplot(data, aes(ads, sales)) +
+  geom_point() +
+  geom_smooth(method="lm")
+
+
+---
+
+6) Financial / Bank Default Prediction
+
+# Experiment 6
+# Bank Default Prediction
+
+library(caret)
+
+# Sample data
+income <- c(25000,30000,40000,50000,60000)
+loan <- c(5000,7000,9000,11000,13000)
+status <- c("No","No","Yes","Yes","Yes")
+
+data <- data.frame(income, loan, status)
+
+# Convert factor
+data$status <- as.factor(data$status)
+
+# Model
+model <- train(status ~ income + loan,
+               data=data,
+               method="rpart")
+
+# Prediction
+predict(model)
+
+These are more record-friendly: ✅ includes library()
+✅ proper ML/forecast packages
+✅ simple enough to type in lab
+✅ output will show clearly
+
+Sorry about the first one 😄
